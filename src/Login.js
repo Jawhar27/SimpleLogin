@@ -1,12 +1,16 @@
 import React ,{ Component } from 'react';
 
 
+
 class Login extends Component {
    
     state={
         email:null,
         password:null,
         items:[],
+        isvalid:false,
+        error:null,
+      
     }
 
 //getting records
@@ -45,10 +49,19 @@ class Login extends Component {
           {items.map(item=>{
         
         if(item['email']===this.state.email && item['password']===this.state.password){
-          console.log("You are logged In");
-          return null;
+          alert("You are logged In");
+          this.setState({
+            isvalid:true
+          })
+          
+          //redirect to dashboard
+           return ;
         }
         else{
+          this.setState({
+            isvalid:false,
+            error:'Please Check the credentials that you entered !'
+          })
           console.log("You are Not logged In");
           
         }
@@ -63,15 +76,17 @@ render(){
 
  
   return (
+    var { error }=this.state;
 
      <div className="login-form" style={{margin:50}}>
-     <h1 style={{color:'red'}}>Login</h1>
+     <h1 style={{color:'red',"margin-left":70}}>Login</h1>
      <form onSubmit={this.handleSubmit}>
-            <label htmlFor="email">email:</label>
+            <label htmlFor="email">User email:</label>
             <input type="text" id="email" onChange={this.handleChange}/><br/><br/>
-                <label htmlFor="password">Password:</label>
+                <label htmlFor="password">Password    :</label>
             <input type="password" id="password"onChange={this.handleChange}/><br/><br/>
-            <button>Login</button>
+            <button style={{"margin-left":70,"width":100}}>Login</button>
+            error===null?():<h1>error</h1>
        </form>
      </div>
      
