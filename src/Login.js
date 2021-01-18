@@ -9,7 +9,7 @@ class Login extends Component {
         password:null,
         items:[],
         isvalid:false,
-        error:null,
+        error:false,
       
     }
 
@@ -49,19 +49,19 @@ class Login extends Component {
           {items.map(item=>{
         
         if(item['email']===this.state.email && item['password']===this.state.password){
-          alert("You are logged In");
+          
           this.setState({
             isvalid:true,
-            error:'You are Logged In!'
+            error:false
           })
-          
+          alert("You are logged In");
           //redirect to dashboard
            return ;
         }
         else{
           this.setState({
             isvalid:false,
-            error:'Please Check the credentials that you entered !'
+            error:true,
           })
           console.log("You are Not logged In");
           
@@ -87,7 +87,7 @@ render(){
                 <label htmlFor="password">Password    :</label>
             <input type="password" id="password"onChange={this.handleChange}/><br/><br/>
             <button style={{"margin-left":70,"width":100}}>Login</button>
-            <div>{this.state.error}</div>
+            <div>{this.state.error ?( <h4 style={{color:"red"}}>please check the credentials that entered !</h4>):null}</div>
        </form>
      </div>
      
