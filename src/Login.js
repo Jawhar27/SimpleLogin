@@ -51,7 +51,8 @@ class Login extends Component {
         if(item['email']===this.state.email && item['password']===this.state.password){
           alert("You are logged In");
           this.setState({
-            isvalid:true
+            isvalid:true,
+            error:'You are Logged In!'
           })
           
           //redirect to dashboard
@@ -76,7 +77,7 @@ render(){
 
  
   return (
-    var { error }=this.state;
+  
 
      <div className="login-form" style={{margin:50}}>
      <h1 style={{color:'red',"margin-left":70}}>Login</h1>
@@ -86,7 +87,7 @@ render(){
                 <label htmlFor="password">Password    :</label>
             <input type="password" id="password"onChange={this.handleChange}/><br/><br/>
             <button style={{"margin-left":70,"width":100}}>Login</button>
-            error===null?():<h1>error</h1>
+            <div>{this.state.error}</div>
        </form>
      </div>
      
