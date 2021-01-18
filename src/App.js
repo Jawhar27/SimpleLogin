@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React ,{ Component } from 'react';
+import Login from './Login.js';
+import Dashboard from './Dashboard.js';
 
-function App() {
+
+class App extends Component {
+   constructor(props){
+     super(props);
+     this.state={
+       items:[],
+     }
+   }
+
+
+
+render(){
+  var { items } =this.state;
+ 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <h1> Users </h1>
+      <Dashboard />
+       
       </header>
+      <Login  />
     </div>
   );
+}
 }
 
 export default App;
